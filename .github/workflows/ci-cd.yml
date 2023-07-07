@@ -1,0 +1,45 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Test
+        run: echo "testing"
+#        run: yarn test
+
+      - name: Build
+        run: expo build:android # or expo build:ios if you're deploying to iOS
+
+      - name: Deploy to Expo
+        run: |
+          echo "deploying to expo"
+#          echo "EXPO_CLI_PASSWORD=${{ secrets.EXPO_CLI_PASSWORD }}" >> $GITHUB_ENV
+#          npx expo login -u ${{ secrets.EXPO_CLI_USERNAME }} -p $EXPO_CLI_PASSWORD
+#          npx expo publish
