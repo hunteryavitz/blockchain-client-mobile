@@ -1,9 +1,7 @@
 # CHANGELOG
 
-v0.0.1
+**v0.0.1 - Unreleased**
 
 ---
 
-- [Create Project](#1)
-
-- [Add Deployment Pipeline](#3)
+- [Initial Create]()
