@@ -1,9 +1,8 @@
 # CHANGELOG
 Unreleased
 
----
-
-**v0.0.1** 7/8/23
+**7/8/23**
+*v0.0.1*
 
 - [Add Initial Code](#1)
 - [Add Deployment Pipeline](#3)
