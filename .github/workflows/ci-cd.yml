@@ -38,7 +38,7 @@ jobs:
 #        run: yarn test
 
       - name: Build
-        run: expo build:android # or expo build:ios if you're deploying to iOS
+        run: expo prebuild # or expo build:ios if you're deploying to iOS
 
       - name: Deploy to Expo
         run: |
