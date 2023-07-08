@@ -21,6 +21,10 @@
       },
         "package": "com.hunteryavitz.blockchain.client.mobile"
     },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.hunteryavitz.blockchain.client.mobile"
+    },
     "web": {
       "favicon": "./assets/favicon.png"
     }
