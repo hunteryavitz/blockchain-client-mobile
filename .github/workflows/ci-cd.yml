@@ -35,7 +35,9 @@ jobs:
 #        run: yarn test
 
       - name: Build
-        run: expo start # --android or expo start --ios if you're deploying to iOS
+#        run: expo start # --android or expo start --ios if you're deploying to iOS
+        run: |
+            echo "building"
 
       - name: Deploy to Expo
         run: |
