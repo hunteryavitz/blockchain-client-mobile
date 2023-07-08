@@ -21,7 +21,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+        "package": "com.hunteryavitz.blockchain.client.mobile"
     },
     "web": {
       "favicon": "./assets/favicon.png"
