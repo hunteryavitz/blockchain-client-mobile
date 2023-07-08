@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
+      - name: Install Expo CLI
+        run: yarn global add expo-cli
+
       - name: Test
         run: echo "testing"
 #        run: yarn test
