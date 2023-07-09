@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "blue",
+        "fontSize": 20,
+        "fontWeight": "bold",
+      }
+    }
+  >
+    Blockchain Mobile Client
+  </Text>
+  <Text
+    style={
+      {
+        "color": "black",
+        "fontSize": 15,
+        "fontWeight": "bold",
+      }
+    }
+  >
+    This client serves as the mobile component for the blockchain project.
+  </Text>
+</View>
+`;

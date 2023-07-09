@@ -5,6 +5,7 @@ Unreleased
 
 **7/9/23**
 
+- [Add Unit Tests to Deployment Pipeline](#13)
 - [Add Landing Screen](#15)
 
 ---
