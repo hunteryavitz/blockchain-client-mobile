@@ -1,12 +1,19 @@
-# CHANGELOG
+# Blockchain Mobile Client
+
 Unreleased
 
 ### v0.0.1
 
+**8/1/23**
+
+- [Create Simple UI to Check API Readiness](#18)
+
+---
+
 **7/9/23**
 
-- [Add Unit Tests to Deployment Pipeline](#13)
 - [Add Landing Screen](#15)
+- [Add Unit Tests to Deployment Pipeline](#13)
 
 ---
 
