@@ -11,6 +11,9 @@ exports[`renders correctly 1`] = `
   }
 >
   <Text>
+    Blockchain Mobile Client
+  </Text>
+  <Text>
     Awaiting Readiness Check
   </Text>
   <View
