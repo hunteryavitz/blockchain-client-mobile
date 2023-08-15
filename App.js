@@ -1,55 +1,71 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, Button } from 'react-native';
+import axios from 'axios';
 
-export default function App() {
-    const [data, setData] = useState(false);
-    const [message, setMessage] = useState('Awaiting readiness check');
+function App() {
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    const [blockData, setBlockData] = useState(null);
+    const [blockLoading, setBlockLoading] = useState(true);
+    const [blockError, setBlockError] = useState(null);
+
+    const http = axios.create({
+        baseURL: "http://a9d2-154-6-90-24.ngrok-free.app/api/v1",
+        headers: {
+            "Content-type": "application/json"
+        }
+    })
+
+    useEffect(() => {
+        fetchData()
+            .then(() => setLoading(false))
+            .catch((err) => setError(err.message))
+            .finally(() => console.log('useEffect done'))
+    }, []);
 
     const fetchData = async () => {
-        setMessage('Fetching data');
+        setLoading(true);
+        setError(null);
 
         try {
-            const response = await fetch('http://localhost:8080/api/v1/readiness');
-            const json = await response.json();
-            setData(json);
+            const response = await http.get('/readiness');
+            setData(response.data);
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
 
-            console.log(data);
-            if (!data) {
-                setMessage('Readiness check failed');
-            }
+    const addBlock = async () => {
+        setBlockLoading(true);
+        setBlockError(null);
 
-        } catch (error) {
-            setMessage('Error fetching data');
+        try {
+            const response = await http.post('/block/addBlockToBlockchain');
+            setBlockData(response.data);
+        } catch (err) {
+            setBlockError(err.message);
+        } finally {
+            setBlockLoading(false);
         }
     }
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Blockchain Mobile Client</Text>
-            <Text style={styles.body}>This client serves as the mobile component for the blockchain project.</Text>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            {loading && <Text>Getting Readiness Check...</Text>}
+            {error && <Text>Error: {error}</Text>}
+            {data && <Text>{JSON.stringify(data)}</Text>}
             <Button title="Readiness Check" onPress={fetchData} />
-            <Text>{message}</Text>
-            <StatusBar style="auto" />
+
+            {blockLoading && <Text>Adding Block...</Text>}
+            {blockError && <Text>Error: {blockError}</Text>}
+            {blockData && <Text>{JSON.stringify(blockData)}</Text>}
+            <Button title="Add Block" onPress={addBlock} />
         </View>
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#000',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    title:{
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: 'green'
-    },
-    body:{
-        fontSize: 15,
-        fontWeight: 'bold',
-        color: 'black'
-    }
-});
+export default App;
