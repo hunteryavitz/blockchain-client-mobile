@@ -2,7 +2,11 @@
 
 Unreleased
 
-### v0.0.1
+*v0.0.1*
+
+**8/14/23**
+
+- [Add UI Component to ADD Block to Blockchain](#20)
 
 **8/1/23**
 
