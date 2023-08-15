@@ -39,19 +39,15 @@ function App() {
         fetchReadiness()
             .then(() => setReadinessLoading(false))
             .catch((err) => setReadinessError(err.message))
-            .finally(() => console.log('useEffect done'))
         fetchLiveness()
             .then(() => setLivenessLoading(false))
             .catch((err) => setLivenessError(err.message))
-            .finally(() => console.log('useEffect done'))
         fetchVersion()
             .then(() => setVersionLoading(false))
             .catch((err) => setVersionError(err.message))
-            .finally(() => console.log('useEffect done'))
         fetchValidation()
             .then(() => setVerifyLoading(false))
             .catch((err) => setValidationError(err.message))
-            .finally(() => console.log('useEffect done'))
 
     }, []);
 
@@ -158,27 +154,22 @@ function App() {
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <Text>Blockchain Mobile Client</Text>
-
             {readinessLoading && <Text>Checking Readiness...</Text> || isReady && <Text>API Ready</Text> || <Text>Awaiting Readiness Check</Text>}
             {readinessError && <Text>Error: {readinessError}</Text>}
             {readinessData && <Text>{JSON.stringify(readinessData)}</Text>}
             <Button title="Readiness Check" onPress={fetchReadiness} />
-
             {livenessLoading && <Text>Checking Liveness...</Text> || isAlive && <Text>API Live</Text> || <Text>Awaiting Liveness Check</Text>}
             {livenessError && <Text>Error: {livenessError}</Text>}
             {livenessData && <Text>{JSON.stringify(livenessData)}</Text>}
             <Button title="Liveness Check" onPress={fetchLiveness} />
-
             {versionLoading && <Text>Checking Version...</Text> || hasVersion && <Text>Version</Text> || <Text>Awaiting Version Check</Text>}
             {versionError && <Text>Error: {versionError}</Text>}
             {versionData && <Text>{JSON.stringify(versionData)}</Text>}
             <Button title="Version Check" onPress={fetchVersion} />
-
             {verifyLoading && <Text>Checking Blockchain...</Text> || isValid && <Text>Blockchain Valid</Text> || <Text>Awaiting Validation</Text>}
             {verifyError && <Text>Error: {verifyError}</Text>}
             {verifyData && <Text>{JSON.stringify(verifyData)}</Text>}
             <Button title="Validate Blockchain" onPress={fetchValidation} />
-
             {blockLoading && <Text>Adding Block...</Text> || blockAdded && <Text>Block Added</Text> || <Text>Awaiting Block</Text>}
             {blockError && <Text>Error: {blockError}</Text>}
             {blockData && <Text>{JSON.stringify(blockData)}</Text>}
