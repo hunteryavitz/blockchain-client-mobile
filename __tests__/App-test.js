@@ -20,7 +20,7 @@ beforeEach(() => {
     fetch.mockClear();
 });
 
-it('displays fetching message after button click', async () => {
+it('displays readiness message after button click', async () => {
     const { getByText } = render(<App />);
 
     // simulate button click
@@ -28,6 +28,54 @@ it('displays fetching message after button click', async () => {
 
     // check that the fetching message is displayed
     await waitFor(() => {
-        expect(getByText('Fetching data')).toBeDefined();
+        expect(getByText('Checking Readiness...')).toBeDefined();
+    });
+});
+
+it('displays liveness message after button click', async () => {
+    const { getByText } = render(<App />);
+
+    // simulate button click
+    fireEvent.press(getByText('Liveness Check'));
+
+    // check that the fetching message is displayed
+    await waitFor(() => {
+        expect(getByText('Checking Liveness...')).toBeDefined();
+    });
+});
+
+it('displays version message after button click', async () => {
+    const { getByText } = render(<App />);
+
+    // simulate button click
+    fireEvent.press(getByText('Version Check'));
+
+    // check that the fetching message is displayed
+    await waitFor(() => {
+        expect(getByText('Checking Version...')).toBeDefined();
+    });
+});
+
+it('displays verification message after button click', async () => {
+    const { getByText } = render(<App />);
+
+    // simulate button click
+    fireEvent.press(getByText('Validate Blockchain'));
+
+    // check that the fetching message is displayed
+    await waitFor(() => {
+        expect(getByText('Checking Blockchain...')).toBeDefined();
+    });
+});
+
+it('displays block message after button click', async () => {
+    const { getByText } = render(<App />);
+
+    // simulate button click
+    fireEvent.press(getByText('Add Block'));
+
+    // check that the fetching message is displayed
+    await waitFor(() => {
+        expect(getByText('Adding Block...')).toBeDefined();
     });
 });
