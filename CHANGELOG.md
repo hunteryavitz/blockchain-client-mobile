@@ -4,6 +4,10 @@ Unreleased
 
 *v0.0.1*
 
+**9/4/23**
+
+- [ADD UI Component to POST Transactions to the API](#22)
+
 **8/14/23**
 
 - [Add UI Component to ADD Block to Blockchain](#20)

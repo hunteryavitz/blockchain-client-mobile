@@ -25,6 +25,9 @@ npx expo start
 yarn test
 ```
 
+### Functionality
+This client can now submit `transactions` to the API.  These `transactions` have a `status`.
+
 ### Summary
 The aim of this client is to create service requests to the server-side.
 

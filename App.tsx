@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button } from 'react-native';
 import axios from 'axios';
+import SubmitTransactionForm from './src/components/SubmitTransactionForm';
 
 function App() {
     const [readinessData, setReadinessData] = useState(null);
@@ -47,7 +48,7 @@ function App() {
             .catch((err) => setVersionError(err.message))
         fetchValidation()
             .then(() => setVerifyLoading(false))
-            .catch((err) => setValidationError(err.message))
+            .catch((err) => setVerifyError(err.message))
 
     }, []);
 
@@ -174,6 +175,7 @@ function App() {
             {blockError && <Text>Error: {blockError}</Text>}
             {blockData && <Text>{JSON.stringify(blockData)}</Text>}
             <Button title="Add Block" onPress={addBlock} />
+            <SubmitTransactionForm />
         </View>
     );
 }
